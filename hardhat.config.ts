@@ -1,10 +1,12 @@
-require("@nomiclabs/hardhat-waffle")
-require("@nomiclabs/hardhat-etherscan")
-require("@nomiclabs/hardhat-ethers")
-require("solidity-coverage")
-require("hardhat-gas-reporter")
-require("./tasks/block-number.js")
-require("dotenv").config()
+import "@nomiclabs/hardhat-waffle"
+import "@nomiclabs/hardhat-etherscan"
+import "@nomiclabs/hardhat-ethers"
+import "solidity-coverage"
+import "hardhat-gas-reporter"
+import "./tasks/block-number.js"
+import "dotenv/config"
+import "@typechain/hardhat"
+import { task } from "hardhat/config"
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners()

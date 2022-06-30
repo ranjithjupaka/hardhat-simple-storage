@@ -1,4 +1,4 @@
-const { ethers, run, network } = require("hardhat")
+import { ethers, run, network } from "hardhat"
 
 async function main() {
   const simpleStorageFactory = await ethers.getContractFactory("SimpleStorage")
@@ -22,14 +22,14 @@ async function main() {
   console.log("new Value is :", newValue)
 }
 
-async function verify(contractAddress, args) {
+async function verify(contractAddress: string, args: any[]) {
   console.log("verifying the contract....")
   try {
     await run("verify:verify", {
       address: contractAddress,
       constructorArguments: args,
     })
-  } catch (e) {
+  } catch (e: any) {
     if (e.message.toLowerCase().includes("already verified")) {
       console.log("Already verified")
     } else {
